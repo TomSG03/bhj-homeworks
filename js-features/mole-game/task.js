@@ -8,8 +8,9 @@ function reset() {
 
 for (let index = 1; index < 10; index++) {
   let getHole = document.getElementById(`hole${index}`);
-  getHole.onclick = () => {
-    if (getHole.className.includes('hole_has-mole')) {
+  getHole.onclick = function()  {
+    console.dir(this);
+    if (this.className.includes('hole_has-mole')) {
       dead.textContent++;
       if (dead.textContent == 10) {
         alert('Победа !!!');
