@@ -1,33 +1,19 @@
-const slides = Array.from(document.getElementsByClassName('slider__item'));
-const naviButton = Array.from(document.getElementsByClassName('slider__dot'));
-const buttonLR = Array.from(document.getElementsByClassName('slider__arrow'));
-const indexMax = naviButton.length - 1;
 let position = 0;
 
+const buttonLR = Array.from(document.getElementsByClassName('slider__arrow'));
 buttonLR.forEach((element) => element.onclick = shiftButton);
 
+const naviButton = Array.from(document.getElementsByClassName('slider__dot'));
 naviButton.forEach((element, index) => {
   element.onclick = function() {
-    hideSlide(position);
     position = index;
-    showSlide(position);
+    shiftSlide(0);
   }
 })
 
-function hideSlide(position) {
-  slides[position].classList.remove('slider__item_active');
-  naviButton[position].classList.remove('slider__dot_active');
-}
-
-showSlide = (position) => {
-  slides[position].classList.add('slider__item_active');
-  naviButton[position].classList.add('slider__dot_active');
-}  
-
-function shiftButton() {
-  const dir = this.className.includes("next") ? 1 : -1;
-
-  hideSlide(position);
+function shiftSlide (dir) {
+  const slides = Array.from(document.getElementsByClassName('slider__item'));
+  let indexMax = slides.length - 1;
 
   position += dir;
   if (position < 0) {
@@ -37,7 +23,17 @@ function shiftButton() {
     position = 0;
   }
 
-  showSlide(position);
+  let index = slides.findIndex(element => element.classList.contains('slider__item_active'));
+
+  slides[index].classList.remove('slider__item_active');
+  slides[position].classList.add('slider__item_active');
+  naviButton[index].classList.remove('slider__dot_active');
+  naviButton[position].classList.add('slider__dot_active');
+}  
+
+function shiftButton() {
+  const dir = this.className.includes("next") ? 1 : -1;
+  shiftSlide(dir);
 }
 
-showSlide(position);
+shiftSlide(0);

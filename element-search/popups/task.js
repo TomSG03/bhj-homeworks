@@ -3,10 +3,10 @@ const modalSuccess = document.getElementById('modal_success');
 
 modalMain.classList.add('modal_active');
 
-const modalClose = Array.from(document.getElementsByClassName('modal'));
+const modalClose = document.getElementsByClassName('modal');
 
 for (let index = 0; index < modalClose.length; index++) {
-   modalClose[index].querySelector('.modal__close').onclick = function() {
+   modalClose.item(index).querySelector('.modal__close').onclick = function() {
     this.closest('.modal').classList.remove('modal_active');
    };
 }
