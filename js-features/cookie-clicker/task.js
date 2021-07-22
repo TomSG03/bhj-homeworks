@@ -13,4 +13,3 @@ image.onclick = () => {
   speedClick.textContent = Number(1000/(currentTime - lastClickTime)).toFixed(2);
   lastClickTime = currentTime;
 };
-
