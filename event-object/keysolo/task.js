@@ -6,12 +6,10 @@ class Game {
     this.lossElement = container.querySelector('.status__loss');
     this.timeElement = container.querySelector('.status__time');
     
-
     this.timeId = null;
     this.timeInterval = 0;
    
     this.reset();
-
     this.registerEvents();
   }
 
@@ -19,12 +17,9 @@ class Game {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
-    
-    
   }
 
    registerEvents() {
-
     document.addEventListener('keydown', (event) => {
       if (event.key.toUpperCase() === this.currentSymbol.textContent.toUpperCase()) {
         this.success();
@@ -32,7 +27,6 @@ class Game {
       else {
         this.fail();
       }
-
     })
   }
  
@@ -42,7 +36,6 @@ class Game {
     if (this.currentSymbol !== null) {
       return;
     }
-
     if (++this.winsElement.textContent === 10) {
       alert('Победа!');
       this.reset();
@@ -62,23 +55,18 @@ class Game {
     const word = this.getWord();
 
     this.renderWord(word);
-    
-    clearInterval(this.timeId);   
+    clearInterval(this.timeId);
     this.wordBackGround = Array.from(this.container.querySelectorAll('.symbol'));
     this.timeInterval = word.length;
     this.timeElement.textContent = this.timeInterval;
     this.timeId = setInterval((element) => {
-      
-      
       let i = element.timeElement.textContent--;
       if (i === 0) {
         element.fail()
       } else {
-          element.wordBackGround[this.timeInterval - i].classList.add('symbol_time');
-        }  
- 
-    },1000, this)
-
+        element.wordBackGround[this.timeInterval - i].classList.add('symbol_time');
+      }
+    }, 1000, this)
   }
 
   getWord() {

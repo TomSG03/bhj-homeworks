@@ -3,14 +3,14 @@ class DropDown {
     this.menu = list.querySelector('.dropdown__value');
     this.list = Array.from(list.getElementsByClassName('dropdown__item'));
     this.initDropDown();
-    this.initSelect(this.list, this.menu);
+    this.initSelect();
   }
 
-  initSelect(list, menu) {
-    list.forEach(function (element) {
-      element.onclick = () => {
-        menu.textContent = element.textContent;
-        menu.closest('.dropdown').querySelector('.dropdown__list').classList.remove('dropdown__list_active');
+  initSelect() {
+    this.list.forEach(function (element) {
+      element.onclick = function(event) {
+        event.target.closest('.dropdown').querySelector('.dropdown__value').textContent = event.target.textContent;
+        event.target.closest('.dropdown').querySelector('.dropdown__list').classList.remove('dropdown__list_active');
         return false;
       }
     })
