@@ -42,26 +42,26 @@ class Control {
 //Размер
 const font = document.getElementsByClassName('font-size');
 const propSize = {
-  'small': 'book_fs-small',
-  'norm': '',
-  'big': 'book_fs-big'
+  small: 'book_fs-small',
+  norm: '',
+  big: 'book_fs-big'
   }
 new Control('', 'size', font, propSize, 'font-size_active');
 
 //Цвет
 const color = document.querySelector('.book__control_color').getElementsByClassName('color');
 const propColor = {
-  'black': 'book_color-black',
-  'gray': 'book_color-gray',
-  'whitesmoke': 'book_color-whitesmoke'
+  black: 'book_color-black',
+  gray: 'book_color-gray',
+  whitesmoke: 'book_color-whitesmoke'
   }
 new Control('book_color-black', 'textColor', color, propColor, 'color_active');
 
 //Фон
 const backGround = document.querySelector('.book__control_background').getElementsByClassName('color');
 const propBg = {
-  'black': 'book_bg-black',
-  'gray': 'book_bg-gray',
-  'white': 'book_bg-white'
+  black: 'book_bg-black',
+  gray: 'book_bg-gray',
+  white: 'book_bg-white'
   }
 new Control('book_bg-white', 'bgColor', backGround, propBg, 'color_active');
