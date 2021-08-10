@@ -10,9 +10,22 @@ function addTask(value) {
 }
 
 document.getElementById('tasks__add').addEventListener('click', event => {
+  event.preventDefault();
   const text = document.getElementById('task__input')
   if (text.value.trim()) {
     addTask(text.value);
     text.value = '';
-  }  
+  }
 })
+
+document.getElementById('tasks__form').addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const text = document.getElementById('task__input')
+    if (text.value.trim()) {
+      addTask(text.value);
+      text.value = '';
+    }
+  }
+})
+
