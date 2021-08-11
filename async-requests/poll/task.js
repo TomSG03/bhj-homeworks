@@ -29,7 +29,9 @@ xhr.onload = function() {
 xhrBtn.onload = function() {
   const rezult = JSON.parse(xhrBtn.responseText).stat;
   answers.innerHTML = '';
+  let summ = 0;
+  rezult.forEach(item => {summ += item.votes});
   rezult.forEach(item => {
-    title.innerHTML += `<div>${item.answer}: ${item.votes}</div>`;
+    title.innerHTML += `<div>${item.answer}: ${(item.votes / summ * 100).toFixed(2)}%</div>`;
   })
 }
